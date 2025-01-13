@@ -1,6 +1,6 @@
 import {Schema,model} from "mongoose";
 import { suppliesI } from "../Interfaces/suppliesInterface";
-
+import moment from "moment-timezone";
 
  const schemasSupliesI = new Schema<suppliesI>(
 
@@ -25,7 +25,18 @@ import { suppliesI } from "../Interfaces/suppliesInterface";
         },
         updatedAt:{
             type:Date,
-            default:Date.now
+            default: () => moment().tz("America/Bogota").toDate()
+            
+        },
+        fechaMantenimiento:{
+            type:Date,
+            default: () => moment().tz("America/Bogota").toDate()
+            
+        },
+        fechaProximoM:{
+            type:Date,
+            default: () => moment().tz("America/Bogota").toDate()
+            
         }
 
     },

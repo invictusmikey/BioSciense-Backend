@@ -7,6 +7,8 @@ export interface suppliesI {
     InventarioFina: number
     Estado: string
     updatedAt: Date
+    fechaMantenimiento:Date
+    fechaProximoM:Date
 
 
 }

@@ -1,3 +1,4 @@
+import moment from 'moment-timezone'
 import { suppliesB } from '../Interfaces/suppliesbInterface'
 import suppliesBModel from '../Models/suppliesbModel'
 
@@ -23,8 +24,16 @@ const createSuppliesb = async (data: suppliesB) => {
 
 const getSuppliesb = async () => {
     try {
-        const responseGetSupplies = await suppliesBModel.find({})
-        return responseGetSupplies
+        const data = await suppliesBModel.find()
+
+         const formattedData = data.map(item => ({
+              ...item.toObject(),
+              updatedAt: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
+              fechaMantenimiento:moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
+              fechaProximoM:moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss")
+            }));
+        
+            return formattedData
     } catch (error) {
         throw new Error(`Error al obtener insumos`)
     }

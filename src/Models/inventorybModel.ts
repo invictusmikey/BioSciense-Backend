@@ -1,9 +1,9 @@
-import { Model, model, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 import { inventoryB } from "../Interfaces/inventorybInterface";
-
+import moment from "moment-timezone";
 const schemaInventoryB = new Schema<inventoryB>(
     {
-        
+
         cod_inventario: {
             type: String,
             required: true,
@@ -26,7 +26,7 @@ const schemaInventoryB = new Schema<inventoryB>(
         },
         ubicacion: {
             type: String,
-            required: true, 
+            required: true,
         },
         reg_invima: {
             type: String,
@@ -34,8 +34,19 @@ const schemaInventoryB = new Schema<inventoryB>(
         },
         updatedAt: {
             type: Date,
-            default:Date.now
+            default: Date.now
+        },
+        fechaMantenimiento: {
+            type: Date,
+            default: () => moment().tz("America/Bogota").toDate()
+
+        },
+        fechaProximoM: {
+            type: Date,
+            default: () => moment().tz("America/Bogota").toDate()
+
         }
+
     },
     {
         timestamps: true,

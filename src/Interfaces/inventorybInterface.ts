@@ -9,5 +9,7 @@ export interface inventoryB {
     ubicacion: string
     reg_invima: string
     updatedAt:Date
+    fechaMantenimiento:Date
+    fechaProximoM:Date
 }
 
