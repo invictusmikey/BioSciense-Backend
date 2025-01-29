@@ -1,6 +1,7 @@
 import moment from 'moment-timezone'
 import { suppliesB } from '../Interfaces/suppliesbInterface'
 import suppliesBModel from '../Models/suppliesbModel'
+import { inventoryB } from '../Interfaces/inventorybInterface'
 
 const createSuppliesb = async (data: suppliesB) => {
     try {
@@ -67,6 +68,9 @@ const deleteSupplieb = async (_id: string) => {
             throw new Error(`Error al borrar el insumo`)
         }
     }
+
+
+   
 
     export { createSuppliesb, getSuppliesb, getSupplieb, deleteSupplieb,updateSupplieb }
 

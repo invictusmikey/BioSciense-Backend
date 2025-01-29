@@ -31,8 +31,8 @@ const getSupplies = async () => {
     const formattedData = data.map(item => ({
         ...item.toObject(),
         updatedAt: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
-        fechaMantenimiento: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
-        fechaProximoM: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss")
+        fechaMantenimiento: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY"),
+        fechaProximoM: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY")
     }));
 
     return formattedData;

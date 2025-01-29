@@ -6,10 +6,6 @@ import router from "./Routes/index";
 
 
 
-
-
-
-
 const app = express()
 
 const PORT = process.env.PORT || 7000

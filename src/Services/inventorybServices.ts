@@ -20,8 +20,8 @@ const getInventorys = async () => {
         const formattedData = data.map(item => ({
             ...item.toObject(),
             updatedAt: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
-            fechaMantenimiento: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
-            fechaProximoM: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss")
+            fechaMantenimiento: moment(item.updatedAt).format("YYYY-MM-DD"),
+            fechaProximoM: moment(item.updatedAt).tz("America/Bogota").format("YYYY-MM-DD")
         }));
 
         return formattedData;
@@ -65,7 +65,24 @@ const updateInventory = async (id: string, data: inventoryB) => {
     }
 }
 
+const updateArchives = async (id: string, archivos: string[]): Promise<inventoryB | null> => {
+    try {
+        const response = await inventoryBModel.findOneAndUpdate(
+            { _id: id },
+            { $set: { archivos: archivos, updatedAt: new Date() } },
+            { new: true } 
+        );
+
+        if (!response) {
+            throw new Error('Documento no encontrado');
+        }
+
+        return response;
+    } catch (error: any) {
+        console.error('Error al actualizar los archivos:', error.message || error);
+        throw new Error(`Error al actualizar los archivos del insumo: ${error.message || error}`);
+    }
+};
 
 
-
-export { insertInventory, getInventorys, getInventory, deleteInventory, updateInventory };
+export { insertInventory, getInventorys, getInventory, deleteInventory, updateInventory};

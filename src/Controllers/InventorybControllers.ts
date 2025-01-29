@@ -1,4 +1,7 @@
 import { Response, Request } from 'express';
+import fs from 'fs/promises';
+import path from 'path';
+
 import { insertInventory, getInventorys, getInventory, deleteInventory, updateInventory} from '../Services/inventorybServices';
 
 const createInventoryb = async (req: Request, res: Response) => {
@@ -70,6 +73,9 @@ const updateInventoryb = async (req: Request, res: Response) => {
         return res.status(500).json({ message: 'Error al actualizar el insumo'});
     }
 };
+
+
+
 
 
 export { getInventorysb, createInventoryb, getInventoryb, deleteInventoryb, updateInventoryb };
