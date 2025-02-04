@@ -13,24 +13,20 @@ const insertInventory = async (item: inventoryB) => {
 
 const getInventorys = async () => {
     try {
-        const data = await inventoryBModel.find(); 
-        console.log("Registros encontrados:", data.length); 
-
-        if (!data.length) {
-            console.log("⚠️ No hay registros en la colección.");
-        }
-
-        const formattedData = data.map(item => ({
-            ...item.toObject(),
-            updatedAt: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
-        }));
-
-        return formattedData;
+        const responsGeti = await inventoryBModel.find({});
+        
+        const data = await inventoryBModel.find();
+        // const formattedData = data.map(item => ({
+        //     ...item.toObject(),
+        //     updatedAt: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
+            
+        // }));
+        return data;
     } catch (error) {
-        console.error("❌ Error al encontrar las maquinas:", error);
-        throw new Error('Error al encontrar las maquinas');
+        throw new Error(`Error al obtener maquinas`);
+        throw new Error('Error al encontrar las maquinas')
     }
-};
+}
 
 
 const getInventory = async (id: string) => {

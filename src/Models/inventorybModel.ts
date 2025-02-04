@@ -1,5 +1,6 @@
-import { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 import { inventoryB } from "../Interfaces/inventorybInterface";
+import moment from "moment-timezone";
 
 const schemaInventoryB = new Schema<inventoryB>(
     {
@@ -34,7 +35,7 @@ const schemaInventoryB = new Schema<inventoryB>(
         },
         updatedAt: {
             type: Date,
-            default: Date.now
+            default: () => moment().tz('America/Bogota').toDate()
         },
         archivos: {
             type: [String],
@@ -46,7 +47,7 @@ const schemaInventoryB = new Schema<inventoryB>(
         versionKey: false,
     }
 );
-
+// const EjemploModel = mongoose.model("Ejemplo", ejemploSchema);
 const inventoryBModel = model<inventoryB>("inventoryB", schemaInventoryB, "Biomedica");
 
 export default inventoryBModel;
