@@ -17,23 +17,13 @@ import moment from "moment-timezone";
         CantidadUtilizada:{
             type:Number
         },
-        InventarioFina:{
+        InventarioFinal:{
             type:Number
         },
         Estado:{
             type:String
         },
         updatedAt:{
-            type:Date,
-            default: () => moment().tz("America/Bogota").toDate()
-            
-        },
-        fechaMantenimiento:{
-            type:Date,
-            default: () => moment().tz("America/Bogota").toDate()
-            
-        },
-        fechaProximoM:{
             type:Date,
             default: () => moment().tz("America/Bogota").toDate()
             

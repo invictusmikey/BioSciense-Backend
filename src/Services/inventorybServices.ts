@@ -13,25 +13,25 @@ const insertInventory = async (item: inventoryB) => {
 
 const getInventorys = async () => {
     try {
+        const data = await inventoryBModel.find(); 
+        console.log("Registros encontrados:", data.length); 
 
-        const data = await inventoryBModel.find();
-
+        if (!data.length) {
+            console.log("⚠️ No hay registros en la colección.");
+        }
 
         const formattedData = data.map(item => ({
             ...item.toObject(),
             updatedAt: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
-            fechaMantenimiento: moment(item.updatedAt).format("YYYY-MM-DD"),
-            fechaProximoM: moment(item.updatedAt).tz("America/Bogota").format("YYYY-MM-DD")
         }));
 
         return formattedData;
-
     } catch (error) {
-
-        throw new Error('Error al encontrar las maquinas')
+        console.error("❌ Error al encontrar las maquinas:", error);
+        throw new Error('Error al encontrar las maquinas');
     }
+};
 
-}
 
 const getInventory = async (id: string) => {
     try {
@@ -85,4 +85,4 @@ const updateArchives = async (id: string, archivos: string[]): Promise<inventory
 };
 
 
-export { insertInventory, getInventorys, getInventory, deleteInventory, updateInventory};
+export { insertInventory, getInventorys, getInventory, deleteInventory, updateInventory,updateArchives};

@@ -4,11 +4,9 @@ export interface suppliesI {
     Descripcion: string
     InventarioInicial: number
     CantidadUtilizada: number
-    InventarioFina: number
+    InventarioFinal: number
     Estado: string
     updatedAt: Date
-    fechaMantenimiento:Date
-    fechaProximoM:Date
 
 
 }

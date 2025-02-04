@@ -8,7 +8,7 @@ const schemaSuppliesB = new Schema<suppliesB>(
         Nombre: {
             type: String
         },
-        Cantidad_incial: {
+        Cantidad_utilizada: {
             type: Number
         },
         Inventario_inicial: {
@@ -21,16 +21,7 @@ const schemaSuppliesB = new Schema<suppliesB>(
             type: Date,
             default: () => moment().tz('America/Bogota').toDate()
         },
-        fechaMantenimiento: {
-            type: Date,
-            default: () => moment().tz("America/Bogota").toDate()
 
-        },
-        fechaProximoM: {
-            type: Date,
-            default: () => moment().tz("America/Bogota").toDate()
-
-        }
     },
     {
         timestamps: true,

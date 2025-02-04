@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { inventoryB } from "../Interfaces/inventorybInterface";
+
 const schemaInventoryB = new Schema<inventoryB>(
     {
 

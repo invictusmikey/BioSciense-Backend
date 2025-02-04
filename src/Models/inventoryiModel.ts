@@ -14,16 +14,6 @@ const schemainventoryiModel = new Schema<inventoryI>(
         updatedAt: {
             type: Date,
             default: () => moment().tz('America/Bogota').toDate()
-        },
-         fechaMantenimiento: {
-            type: Date,
-            default: () => moment().tz("America/Bogota").toDate()
-
-        },
-        fechaProximoM: {
-            type: Date,
-            default: () => moment().tz("America/Bogota").toDate()
-
         }
 
     },

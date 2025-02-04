@@ -19,9 +19,9 @@ app.use(router)
 
 
 
-db().then(() => console.log('connected with mongo'));
 
 app.listen(PORT, () => console.log(`Running on port ${PORT}`))
+db().then(() => console.log('Cargando...'));
 
 
 

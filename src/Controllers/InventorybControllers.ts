@@ -17,7 +17,8 @@ const createInventoryb = async (req: Request, res: Response) => {
 const getInventorysb = async (req: Request, res: Response) => {
     try {
         const response = await getInventorys();
-        res.send(response);
+        
+        res.status(200).json({message:'los datos son',response});
     } catch (error) {
         return res.status(500).json({ message: 'Error al obtener los insumos' });
     }

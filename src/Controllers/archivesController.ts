@@ -20,13 +20,13 @@ const getArchives = async (req: Request, res: Response) => {
          res.status(200).json({ message: 'Archivos encontrados', data: archivos });
          console.log(archivos);
          
-
     } catch (error) {
 
         res.status(500).json({message: 'Error al obtener el archivo', error});
     }
 
 }
+
 
 const subirArchivo = async (req: Request, res: Response) => {
     upload(req, res, async (err) => {

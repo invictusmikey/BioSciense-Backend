@@ -1,4 +1,3 @@
-import { suppliesB } from "./suppliesbInterface"
 
 export interface inventoryB {
     cod_inventario: string
