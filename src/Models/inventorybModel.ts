@@ -47,7 +47,6 @@ const schemaInventoryB = new Schema<inventoryB>(
         versionKey: false,
     }
 );
-// const EjemploModel = mongoose.model("Ejemplo", ejemploSchema);
 const inventoryBModel = model<inventoryB>("inventoryB", schemaInventoryB, "Biomedica");
 
 export default inventoryBModel;

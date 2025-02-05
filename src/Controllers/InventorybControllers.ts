@@ -1,6 +1,5 @@
 import { Response, Request } from 'express';
-import fs from 'fs/promises';
-import path from 'path';
+
 
 import { insertInventory, getInventorys, getInventory, deleteInventory, updateInventory} from '../Services/inventorybServices';
 
@@ -17,8 +16,7 @@ const createInventoryb = async (req: Request, res: Response) => {
 const getInventorysb = async (req: Request, res: Response) => {
     try {
         const response = await getInventorys();
-        
-        res.status(200).json({message:'los datos son',response});
+        return res.status(200).json(response); 
     } catch (error) {
         return res.status(500).json({ message: 'Error al obtener los insumos' });
     }

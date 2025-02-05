@@ -1,11 +1,11 @@
 
-export interface suppliesB{
-    Nombre:string
-    Cantidad_utilizada:number
-    Inventario_inicial:number
-    Inventario_final :number
-    updatedAt:Date
-       
-    
+export interface suppliesB {
+    Nombre: string
+    cantidad_utilizada: number
+    inventario_inicial: number
+    inventario_final: number
+    updatedAt: Date
+
+
 
 }

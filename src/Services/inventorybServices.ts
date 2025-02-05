@@ -13,15 +13,14 @@ const insertInventory = async (item: inventoryB) => {
 
 const getInventorys = async () => {
     try {
-        const responsGeti = await inventoryBModel.find({});
         
         const data = await inventoryBModel.find();
-        // const formattedData = data.map(item => ({
-        //     ...item.toObject(),
-        //     updatedAt: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
+        const formattedData = data.map(item => ({
+            ...item.toObject(),
+            updatedAt: moment(item.updatedAt).tz("America/Bogota").format("DD/MM/YYYY HH:mm:ss"),
             
-        // }));
-        return data;
+        }));
+        return formattedData;
     } catch (error) {
         throw new Error(`Error al obtener maquinas`);
         throw new Error('Error al encontrar las maquinas')

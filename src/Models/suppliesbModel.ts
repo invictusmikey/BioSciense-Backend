@@ -8,13 +8,16 @@ const schemaSuppliesB = new Schema<suppliesB>(
         Nombre: {
             type: String
         },
-        Cantidad_utilizada: {
+
+        cantidad_utilizada: {
             type: Number
         },
-        Inventario_inicial: {
+
+        inventario_inicial: {
             type: Number
         },
-        Inventario_final: {
+
+        inventario_final: {
             type: Number
         },
         updatedAt: {
@@ -29,5 +32,5 @@ const schemaSuppliesB = new Schema<suppliesB>(
     }
 )
 
-const suppliesBModel = model<suppliesB>('suppliesB', schemaSuppliesB, 'insuBiomedica')
+const suppliesBModel = model<suppliesB>('suppliesB', schemaSuppliesB, 'InsuBiomedica')
 export default suppliesBModel
