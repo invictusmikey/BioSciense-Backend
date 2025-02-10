@@ -38,7 +38,7 @@ const schemaInventoryB = new Schema<inventoryB>(
             default: () => moment().tz('America/Bogota').toDate()
         },
         archivos: {
-            type: [String],
+            type:[String],
             required: false,
         }
     },

@@ -1,7 +1,9 @@
 import multer from 'multer';
+import fs from 'fs'; 
 import inventoryBModel from '../Models/inventorybModel';
 import { Request, Response } from 'express';
 import { storage } from '../Config/multerConfig';
+
 
 const upload = multer({ storage }).array('archivos');
 
@@ -30,6 +32,10 @@ const getArchives = async (req: Request, res: Response) => {
 
 const subirArchivo = async (req: Request, res: Response) => {
     upload(req, res, async (err) => {
+
+        if (!fs.existsSync("../uploadPath")) {
+            fs.mkdirSync("../uploadPath", { recursive: true });
+        }
         if (err) {
             return res.status(500).json({ message: 'Error al subir los archivos', error: err.message });
         }
