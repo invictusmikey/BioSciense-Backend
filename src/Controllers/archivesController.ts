@@ -3,6 +3,7 @@ import fs from 'fs';
 import inventoryBModel from '../Models/inventorybModel';
 import { Request, Response } from 'express';
 import { storage } from '../Config/multerConfig';
+import path from 'path';
 
 
 const upload = multer({ storage }).array('archivos');
@@ -60,9 +61,39 @@ const subirArchivo = async (req: Request, res: Response) => {
     });
 };
 
+const deleteArchives = async (req: Request, res: Response) => {
+    const { id: inventarioId } = req.params;
+
+    try {
+        const inventario = await inventoryBModel.findById(inventarioId);
+        if (!inventario) {
+            return res.status(404).json({ message: "Inventario no encontrado" });
+        }
+
+        const archivos: string[] = inventario.archivos || [];
+        
+        for (const archivo of archivos) {
+            const filePath = path.resolve(__dirname, "../../uploads", archivo); 
+            try {
+                if (fs.existsSync(filePath)) {
+                    fs.unlinkSync(filePath);
+                }
+            } catch (error) {
+                console.error(`Error al eliminar el archivo ${archivo}:`, error);
+            }
+        }
+
+        await inventoryBModel.findByIdAndDelete(inventarioId);
+
+        res.status(200).json({ message: "Archivo(s) eliminado(s) con éxito" });
+    } catch (error) {
+        res.status(500).json({ message: "Error al eliminar el archivo", error });
+    }
+};
 
 
 export default {
     subirArchivo,
-    getArchives
+    getArchives,
+    deleteArchives
 };
