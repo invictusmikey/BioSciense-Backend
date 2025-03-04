@@ -22,7 +22,7 @@ const createDirectory = async (req: Request, res: Response) => {
 
 const readFiles = async (req:Request,res:Response) => {
     try {
-        const lista = await fs.readdir("C:/Users/ASUS/Desktop")
+        const lista = await fs.readdir("../../IMAGENOLOGIA")
         res.status(200).json({message:'📂los archivos del directorio son : ',directory:lista})
 
     } catch (error) {   
