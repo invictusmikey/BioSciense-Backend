@@ -1,6 +1,7 @@
 import { Response, Request } from 'express';
 import fs from 'fs/promises';
 import path from 'path';
+import 'dotenv'
 
 
 const createDirectory = async (req: Request, res: Response) => {
@@ -19,14 +20,17 @@ const createDirectory = async (req: Request, res: Response) => {
     }
 };
 
-const ReadFiles = async (req:Request,res:Response) => {
+const readFiles = async (req:Request,res:Response) => {
     try {
-        
-    } catch (error) {
-        
+        const lista = await fs.readdir("C:/Users/ASUS/Desktop")
+        res.status(200).json({message:'📂los archivos del directorio son : ',directory:lista})
+
+    } catch (error) {   
+        res.status(500).json({message:'los archivos nos fueron leidos'})
     }
 }
 
 export default {
-    createDirectory
+    createDirectory,
+    readFiles
 };

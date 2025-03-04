@@ -7,14 +7,17 @@ import router from "./Routes/index";
 
 
 const app = express()
-
 const PORT = process.env.PORT || 7000
 
-app.use(cors())
 
-app.use(express.json())
+app.use(cors());
 
-app.use(router)
+app.use(express.json());
+
+app.use(router);
+
+const DIRECTORY_PATH_1 = "C:/Users/ASUS/Documents/jhon";
+app.use('/directorysRoutes',express.static(DIRECTORY_PATH_1))
 
 
 
